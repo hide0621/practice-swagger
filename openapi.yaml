@@ -13,20 +13,44 @@ paths:
           in: path
           required: true
           schema: { type: string}
-          example: "abcdefg"
       requestBody:
-        description: "Contents of review"
+        description: "Contensts of review"
         required: true
         content:
           application/json:
             schema:
               type: object
-              properties:
-                score: { type: integer, example: 3}
-                comment: { type: string, example: "Delicious"}
+              properties: 
+                score: { type: integer}
+                comment : {type: string}
       responses:
-          "201":
-            description: "Success operation"
+        "201": 
+          description: "Success operation"
+          headers:
+            location:
+              description: "New URL of created review"
+              schema: { type: string, format: URL}
+        "400": 
+          description: "Client side error"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: { type: string}
+                  tyep: { type: string}
+                  message: { type: string}
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        field: { type: string}
+                        code: { type: string}
+
+
+
+
 
           
 
