@@ -5,52 +5,22 @@ info:
   version: "1.0.0"
 
 paths: 
-  "/shops/{shopId}/reviews":
-    post:
-      summary: "Create review"
-      parameters:
-        - name: shopId
-          in: path
-          required: true
-          schema: { type: string}
-      requestBody:
-        description: "Contensts of review"
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties: 
-                score: { type: integer}
-                comment : {type: string}
-      responses:
-        "201": 
-          description: "Success operation"
-          headers:
-            location:
-              description: "New URL of created review"
-              schema: { type: string, format: URL}
-        "400": 
-          description: "Client side error"
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  code: { type: string}
-                  tyep: { type: string}
-                  message: { type: string}
-                  errors:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        field: { type: string}
-                        code: { type: string}
+  {}
 
-
-
-
-
-          
+components:
+  schemas:
+    SampleInt:
+      type: integer
+      minimum: 0
+      exclusiveMinimum: false
+      maximum: 100
+      exclusiveMaximum: true
+    SampleString:
+      type: string
+      nullable: true  
+      minLength: 10
+      maxLength: 20
+    SampleBoolean:
+      type: boolean
+      
 
