@@ -9,18 +9,21 @@ paths:
 
 components:
   schemas:
-    SampleInt:
-      type: integer
-      minimum: 0
-      exclusiveMinimum: false
-      maximum: 100
-      exclusiveMaximum: true
-    SampleString:
-      type: string
-      nullable: true  
-      minLength: 10
-      maxLength: 20
-    SampleBoolean:
-      type: boolean
-      
-
+    SampleObject:
+      type: object
+      properties:
+        shop:
+          type: object
+          properties:
+            name: { type: string }
+            place: { type: string }
+        review:
+          type: array
+          items:
+            type: object
+            properties: 
+              score: 
+                type: integer
+                enum: [1, 2, 3, 4, 5]
+              comment: 
+                type: string
