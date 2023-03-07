@@ -6,6 +6,7 @@ info:
     # Features
     - Get reviews.
     - Post review.
+    - Delete review.
   termsOfService: "https://tastylog.com/terms/"
   contact:
     name: "Customer Support"
@@ -71,6 +72,23 @@ paths:
               schema: { type: string, format: url }
         "400":
           $ref: "#/components/responses/400-BadRequest"
+    delete:
+      summary: "Delete shop review"
+      description: "Delete specified shop's review"
+      tags: ["reviews"]
+      parameters:
+        - $ref: "#/components/parameters/ShopId"
+        - name: "reviewId"
+          in: query
+          description: "Review identifier"
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: "Success operation"
+        "400":
+          $ref: "#/components/responses/400-BadRequest"
 
 components:
   schemas:
@@ -101,8 +119,4 @@ components:
       schema: { type: string }
   responses:
     400-BadRequest:
-      description: "Client side error"
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/ClientError"
+      description: ""
